@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Valentine Letter</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Aldrich&family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet" />
+
+    <style>
+      :root {
+        --pink: #ffafcc;
+        --dark-pink: #fb6f92;
+      }
+
+      body {
+        background-color: var(--pink);
+        font-family: "Pixelify Sans", sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        overflow: hidden;
+      }
+
+      /* --- Envelope Styles --- */
+      #envelope-container {
+        text-align: center;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+      }
+
+      #envelope-container:hover {
+        transform: scale(1.1);
+      }
+
+      #envelope {
+        width: 200px;
+        display: block;
+        margin: 0 auto;
+      }
+
+      /* --- Letter Styles (Hidden by default) --- */
+      #letter-container {
+        display: none; 
+        text-align: center;
+        background: white;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        border: 4px solid var(--dark-pink);
+        max-width: 90%;
+      }
+
+      .cat {
+        width: 150px;
+        margin: 20px 0;
+      }
+
+      .buttons {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 20px;
+        position: relative;
+        height: 60px;
+      }
+
+      .btn {
+        width: 80px;
+        cursor: pointer;
+        transition: transform 0.2s;
+      }
+
+      .btn:hover {
+        transform: scale(1.1);
+      }
+
+      .no-wrapper {
+        position: absolute;
+        transition: all 0.3s ease;
+        left: 55%; /* Starting position */
+      }
+
+      .final-text {
+        color: var(--dark-pink);
+        font-size: 1.5rem;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+
+    <div id="envelope-container">
+      <img src="envelope.png" alt="Envelope" id="envelope" />
+      <p>♡ Letter for You ♡</p>
+    </div>
+
+    <div id="letter-container">
+      <div class="letter-window">
+        <h1 id="letter-title">Will you be my Valentine?</h1>
+
+        <img src="cat_heart.gif" class="cat" id="letter-cat" />
+
+        <div class="buttons" id="letter-buttons">
+          <img src="yes.png" class="btn yes-btn" alt="Yes" id="yesBtn" />
+
+          <div class="no-wrapper" id="noWrapper">
+            <img src="no.png" class="btn no-btn" alt="No" id="noBtn" />
+          </div>
+        </div>
+
+        <p id="final-text" class="final-text" style="display: none">
+          <strong>I know that we are in a long distance relationship i know it is tough but Enikum ariya ninakum ariya namake enth mathram ishtam ane ene ethar thalli pidichalum vayake undayalum last nammle thane athe solve akum athe eppo ethara stress eduthallum enike ariya long distance tough ane but athine kazhinje oru divasam verum ane nammle oru hug cheyum athe orikalum vedan pettatha oru hug ayirikkum ane nammle ethra happy akum ene ninake ariyo 🥹 baby ninake mathram alla Enikum tough ane ninne kannan pettathane ninne onu thodan pettathe enike eppo ekanekilum onu kanda mathi ene polle ayi athrekum miss cheyunude vave YOU ARE MY WORLD 🌏 THE WORLD WHICH I WISHED AND STILL WISHING I KNOW IT IS KIND OF SELFISHBUT I DON'T CARE BECAUSE I LOVE YOU AND I CAN WISH AND PRAY FOR THAT 😌TO BE MINE I DON'T CARE IF YOU DON'T LOVE ME LIKE I DO[ sathyam parana athe kurach vishamam ulla karyam ane but it's ok pinne enike eppoyum a expectation unde appo ninake ariyalo pls 🥺😁🥰]I STILL LOOK AT YOU LIKE LOOKED AT YOU AT THE BEGINNING ACTUALLY I HAVE FALLEN FOR YOU WHEN AT THE STARTING I LOVE YOU MORE THAN ANYTHING IN THIS WORLD I STILL WISH AND PRAY TO GOD THAT YOU WILL ME MUNE YOU ARE MY BIGGEST TREASURE 💎,MY STRENGTH, MY PILLOW, MY HOME, MY 2ND MOTHER, MY WIFE, MY EVERYTHING MAY GOD BLESS YOU AND BE WITH YOU MAY HE MAKE YOU HAPPY EVEN IF I HAVE RO SACRIFICE MY OWN HAPPINESS MY DEAR PRINCESS 👑 I LOVE YOU 3000 😘🥰</strong>
+        </p>
+      </div>
+    </div>
+
+    <script>
+      const envelopeContainer = document.getElementById('envelope-container');
+      const letterContainer = document.getElementById('letter-container');
+      const yesBtn = document.getElementById('yesBtn');
+      const noWrapper = document.getElementById('noWrapper');
+      const finalText = document.getElementById('final-text');
+      const letterTitle = document.getElementById('letter-title');
+      const letterButtons = document.getElementById('letter-buttons');
+
+      // 1. Open Envelope logic
+      envelopeContainer.addEventListener('click', () => {
+        envelopeContainer.style.display = 'none';
+        letterContainer.style.display = 'block';
+      });
+
+      // 2. "No" Button Dodge logic
+      noWrapper.addEventListener('mouseover', () => {
+        const x = Math.random() * (window.innerWidth - 100);
+        const y = Math.random() * (window.innerHeight - 100);
+        
+        noWrapper.style.position = 'fixed';
+        noWrapper.style.left = x + 'px';
+        noWrapper.style.top = y + 'px';
+      });
+
+      // 3. "Yes" Button logic
+      yesBtn.addEventListener('click', () => {
+        letterButtons.style.display = 'none';
+        letterTitle.style.display = 'none';
+        
+        
+        document.getElementById('letter-cat').src = ''; 
+        
+        finalText.style.display = 'block';
+      });
+    </script>
+  </body>
+</html>
